@@ -1,22 +1,49 @@
+---
+import '../styles/global.css';
+import AsideMenu  from '@components/AsideMenu.astro';
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Spotify Clone</title>
 	</head>
 	<body>
-		<slot />
+		<div id="app" class="h-screen relative p-2 flex gap-2 items-stretch">
+			<aside class="flex flex-col overflow-y-auto">
+				<AsideMenu />
+			</aside><!-- no es necesario colocar [grid-area:aside] porque hace referencia a la mismo elemento -->
+			<main class="bg-zinc-900 rounded-lg overflow-y-auto">main</main><!-- no es necesario colocar [grid-area:main] porque hace referencia a la misma elemento -->
+			<footer class="[grid-area:player]">player</footer> 
+			<slot />
+		</div>
 	</body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+	
+	html {
+	color-scheme: light dark;
 	}
+
+	body {
+	background-color: #000;
+	margin: 0;
+	min-height: 100dvh;
+	}
+
+	#app {
+		display: grid;
+		grid-template-areas: 
+			"aside main main"
+			"player player player";
+		grid-template-columns: 350px 1fr;
+		grid-template-rows: 1fr auto;
+		height: 100dvh;
+	}
+	
 </style>
