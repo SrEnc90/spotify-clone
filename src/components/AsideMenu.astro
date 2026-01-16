@@ -1,0 +1,38 @@
+---
+import CollapseIcon from '@public/CollapseIcon.astro';
+import HomeIcon from '@public/HomeIcon.astro';
+import SideMenuItem from '@components/SideMenuItem.astro';
+import { playlists } from '@lib/data.ts';
+import SideMenuCard from './SideMenuCard.astro';
+---
+
+<nav class="flex flex-col flex-1">
+	<div class="bg-zinc-900 flex flex-col gap-2 font-medium">
+		<div class="flex flex-row gap-4 ml-2">
+			<CollapseIcon /> Your Library
+		</div>
+		<div class="flex flex-row gap-2 justify-center">
+			<div
+				class="px-2 py-1 bg-zinc-700 rounded-3xl hover:bg-zinc-600 hover:cursor-pointer"
+			>
+				Playlists
+			</div>
+			<div
+				class="px-2 py-1 bg-zinc-700 rounded-3xl hover:bg-zinc-600 hover:cursor-pointer"
+			>
+				Artists
+			</div>
+			<div
+				class="px-2 py-1 bg-zinc-700 rounded-3xl hover:bg-zinc-600 hover:cursor-pointer"
+			>
+				Podcasts & Shows
+			</div>
+		</div>
+	</div>
+
+	<div class="flex flex-1 flex-col bg-zinc-900">
+		<SideMenuItem>
+			{playlists.map((playlist) => <SideMenuCard playlist={playlist} />)}
+		</SideMenuItem>
+	</div>
+</nav>
