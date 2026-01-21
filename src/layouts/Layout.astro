@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import AsideMenu from '@components/AsideMenu.astro';
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <!doctype html>
@@ -11,6 +12,7 @@ import AsideMenu from '@components/AsideMenu.astro';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Spotify Clone</title>
+		<ClientRouter fallback="none" />
 	</head>
 	<body>
 		<div id="app" class="h-screen relative p-2 flex gap-2 items-stretch">
@@ -28,9 +30,9 @@ import AsideMenu from '@components/AsideMenu.astro';
 <style>
 	@font-face {
 		font-family: 'SpotifyMixUI';
-		src: url('/fonts/spotify_mix_ui_regular.otf') format('otf');
+		src: url('/fonts/spotify_mix_ui_regular.otf') format('opentype');
 		font-weight: 900;
-		font-weight: normal;
+		font-style: normal;
 		font-display: swap;
 	}
 

@@ -15,13 +15,15 @@ const artistString = new Intl.ListFormat('en', {
 
 <a
 	href=`/playlist/${id}`
-	class="playlist-item flex relative transition-all duration-300 ease-in-out p-2 gap-2 pb-6 hover:bg-zinc-800 rounded-md overflow-hidden items-center shadow-lg hover:shadow-xl bg-zinc-500/30 w-44 flex-col"
+	class="playlist-item flex relative transition-all duration-300 ease-in-out p-2 gap-2 pb-6 hover:bg-zinc-800/80 rounded-md overflow-hidden items-center shadow-lg hover:shadow-xl bg-zinc-600/30 w-44 flex-col"
+	transition:name=`playlist-bg-${id}`
 >
 	<picture class="aspect-square w-full h-auto flex-none">
 		<img
 			src={cover}
 			alt={`Cover of ${title} by ${artistString}`}
 			class="aspect-square w-full h-full object-cover rounded-md"
+			transition:name=`playlist-image-${id}`
 		/>
 	</picture>
 

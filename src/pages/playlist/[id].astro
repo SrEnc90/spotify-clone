@@ -1,0 +1,31 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { allPlaylists, songs } from '@lib/data';
+const { id } = Astro.params;
+
+const playlist = allPlaylists.find((pl) => pl.id === id);
+const playlistSongs = songs.filter((song) => song.id === playlist?.albumId);
+---
+
+<Layout>
+	<div
+		id="playlist-container"
+		class="relative flex flex-col h-full overflow-x-hidden bg-zinc-900"
+		transition:name=`playlist-bg-${id}`
+	>
+		<div
+			class="absolute inset-0 bg-linear-to-b from-transparent via-zinc-900/80 to-zinc-900 pointer-events-none"
+		>
+			<header class="flex flex-col gap-8 px-6">
+				<picture class="aspect-square w-52 h-auto flex-none">
+					<img
+						src={playlist?.cover}
+						alt={`Cover of ${playlist?.title}`}
+						class="aspect-square w-full h-full object-cover rounded-md"
+						transition:name=`playlist-image-${id}`
+					/>
+				</picture>
+			</header>
+		</div>
+	</div>
+</Layout>
