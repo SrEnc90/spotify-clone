@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import AsideMenu from '@components/AsideMenu.astro';
+import { Player } from '@components/Player';
 import { ClientRouter } from 'astro:transitions';
 ---
 
@@ -22,7 +23,9 @@ import { ClientRouter } from 'astro:transitions';
 			<main class="bg-zinc-900 rounded-lg overflow-y-auto">
 				<slot />
 			</main><!-- no es necesario colocar [grid-area:main] porque hace referencia a la misma elemento -->
-			<footer class="[grid-area:player]">player</footer>
+			<footer class="[grid-area:player] min-h-25">
+				<Player client:load />
+			</footer>
 		</div>
 	</body>
 </html>

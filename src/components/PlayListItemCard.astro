@@ -28,10 +28,13 @@ const artistString = new Intl.ListFormat('en', {
 	</picture>
 
 	<div class="flex flex-auto flex-col truncate justify-center px-2">
-		<h4 class="text-white text-sm">
+		<h4 class="text-white text-sm" transition:name=`playlist-title-${id}`>
 			{title}
 		</h4>
-		<span class="text-xs text-gray-400">
+		<span
+			class="text-xs text-gray-400"
+			transition:name=`playlist-artists-${id}`
+		>
 			{artistString}
 		</span>
 	</div>
