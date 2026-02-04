@@ -16,7 +16,7 @@ import { ClientRouter } from 'astro:transitions';
 		<ClientRouter fallback="none" />
 	</head>
 	<body>
-		<div id="app" class="h-screen relative p-2 flex gap-2 items-stretch">
+		<div id="app" class="h-screen relative p-2 gap-2">
 			<aside class="flex flex-col overflow-y-auto">
 				<AsideMenu />
 			</aside><!-- no es necesario colocar [grid-area:aside] porque hace referencia a la mismo elemento -->
@@ -24,7 +24,11 @@ import { ClientRouter } from 'astro:transitions';
 				<slot />
 			</main><!-- no es necesario colocar [grid-area:main] porque hace referencia a la misma elemento -->
 			<footer class="[grid-area:player] min-h-25">
-				<Player client:load />
+				<Player
+					client:only="react"
+					transition:name="media-player"
+					transition:persist
+				/>
 			</footer>
 		</div>
 	</body>
@@ -65,6 +69,7 @@ import { ClientRouter } from 'astro:transitions';
 
 	#app {
 		display: grid;
+		align-items: stretch;
 		grid-template-areas:
 			'aside main main'
 			'player player player';
